@@ -5,8 +5,8 @@ import { Box } from '@chakra-ui/react'
 import { useState } from 'react'
 import axios from 'axios'
 
-import ErrorText from '../common/ErrorText'
-// import apiJoin from '.../requests'
+// import ErrorText from '../../components/common/ErrorText'
+// import apiJoin from '../../requests'
 
 const Join = () => {
   const [loading, setLoading] = useState(false)
@@ -44,7 +44,7 @@ const Join = () => {
     if (values.password < 9)
       setValid('password', false)
 
-    if (values.passwordConfirm != values.password)
+    if (values.passwordConfirm !== values.password)
       setValid('passwordConfirm', false)
 
     if (valid.username && valid.email && valid.password && valid.passwordConfirm) {
@@ -75,9 +75,9 @@ const Join = () => {
             onChange={setValue('username')}
             isInvalid={!valid.username}
           />
-          <ErrorText invalid={!valid.username}>
+          {/* <ErrorText invalid={!valid.username}>
             Username must be at least 6 characters long
-          </ErrorText>
+          </ErrorText> */}
         </Box>
 
 
@@ -89,9 +89,9 @@ const Join = () => {
             onChange={setValue('email')}
             isInvalid={!valid.email}
           />
-          <ErrorText invalid={!valid.email}>
+          {/* <ErrorText invalid={!valid.email}>
             Invalid email
-          </ErrorText>
+          </ErrorText> */}
         </Box>
 
 
@@ -103,9 +103,9 @@ const Join = () => {
             onChange={setValue('password')}
             isInvalid={!valid.password}
           />
-          <ErrorText invalid={!valid.password}>
+          {/* <ErrorText invalid={!valid.password}>
             Password must be at least 8 characters long
-          </ErrorText>
+          </ErrorText> */}
         </Box>
 
 
@@ -117,9 +117,9 @@ const Join = () => {
             onChange={setValue('passwordConfirm')}
             isInvalid={!valid.passwordConfirm}
           />
-          <ErrorText invalid={!valid.passwordConfirm}>
+          {/* <ErrorText invalid={!valid.passwordConfirm}>
             Passwords don't match
-          </ErrorText>
+          </ErrorText> */}
         </Box>
 
 

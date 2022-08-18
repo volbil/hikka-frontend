@@ -2,8 +2,8 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import React from 'react'
 
 // import Login from './components/Login'
-import Join from './components/auth/Join'
-import Home from './containers/Home'
+import { Home } from '../pages'
+import { Join } from '../pages'
 
 const App = () => {
   return (
