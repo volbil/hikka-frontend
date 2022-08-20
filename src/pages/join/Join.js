@@ -16,13 +16,12 @@ export function apiJoin({ username, email, password }) {
 }
 
 const Join = () => {
-  // const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   const {
     handleSubmit,
     register,
-    formState: { errors, isSubmitting },
+    formState: { errors },
     watch
   } = useForm()
 
@@ -36,15 +35,11 @@ const Join = () => {
   })
 
   function onSubmit(values) {
-    // setLoading(true)
-
     mutation.mutate({
       'username': values.username,
       'email': values.email,
       'password': values.password
     })
-
-    // setLoading(false)
   }
 
   return (
@@ -129,7 +124,7 @@ const Join = () => {
 
 
           <Button
-            isLoading={isSubmitting}
+            isLoading={mutation.isLoading}
             w="100%" colorScheme='blue'
             type='submit'
           >

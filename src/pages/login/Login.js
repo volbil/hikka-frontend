@@ -6,6 +6,7 @@ import { Button } from '@chakra-ui/react'
 import { Input } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
+import globalState from '../../state'
 import axios from 'axios'
 
 export function apiLogin({ email, password }) {
@@ -15,31 +16,27 @@ export function apiLogin({ email, password }) {
 }
 
 const Login = () => {
-  // const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   const {
     handleSubmit,
     register,
-    formState: { errors, isSubmitting },
+    formState: { errors }
   } = useForm()
 
   const mutation = useMutation(apiLogin, {
     onSuccess: ({ data }) => {
       console.log(data.secret)
-      // navigate('/login')
+      globalState.secret = data.secret
+      navigate('/')
     }
   })
 
   function onSubmit(values) {
-    // setLoading(true)
-
     mutation.mutate({
       'password': values.password,
       'email': values.email
     })
-
-    // setLoading(false)
   }
 
   return (
@@ -85,7 +82,7 @@ const Login = () => {
 
 
           <Button
-            isLoading={isSubmitting}
+            isLoading={mutation.isLoading}
             w="100%" colorScheme='blue'
             type='submit'
           >
