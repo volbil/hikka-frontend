@@ -1,30 +1,22 @@
+import { useMutation } from '@tanstack/react-query'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { Center } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react'
 import { Input } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
-import { useState } from 'react'
 import { useRef } from 'react'
 import axios from 'axios'
 
-import { useMutation } from '@tanstack/react-query'
-import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
-
 export function apiJoin({ username, email, password }) {
-  const data = {
-      username,
-      email,
-      password
-  };
   return axios.post('https://api.hikka.io/auth/join', {
     username, email, password
   })
 }
 
 const Join = () => {
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   const {
@@ -39,12 +31,12 @@ const Join = () => {
 
   const mutation = useMutation(apiJoin, {
     onSuccess: () => {
-      navigate('/')
+      navigate('/login')
     }
   })
 
   function onSubmit(values) {
-    setLoading(true)
+    // setLoading(true)
 
     mutation.mutate({
       'username': values.username,
@@ -52,7 +44,7 @@ const Join = () => {
       'password': values.password
     })
 
-    setLoading(false)
+    // setLoading(false)
   }
 
   return (
@@ -137,7 +129,7 @@ const Join = () => {
 
 
           <Button
-            isLoading={loading}
+            isLoading={isSubmitting}
             w="100%" colorScheme='blue'
             type='submit'
           >
