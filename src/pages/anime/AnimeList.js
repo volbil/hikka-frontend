@@ -13,13 +13,11 @@ const AnimeList = () => {
   const { isLoading, isError, data, error } = useQuery(['animelist'], apiSearch)
 
   return (
-    <Center pt={5} pb={5}>
-      <SimpleGrid columns={4} spacing={10}>
-        {data?.map(anime => (
-          <Anime key={anime.reference} data={anime} />
-        ))}
-      </SimpleGrid>
-    </Center>
+    <SimpleGrid columns={4} spacing={10} pt={5} pb={5}>
+      {data?.map(anime => (
+        <Anime key={anime.reference} data={anime} />
+      ))}
+    </SimpleGrid>
   )
 }
 
