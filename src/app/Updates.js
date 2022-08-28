@@ -6,7 +6,9 @@ import { Center } from '@chakra-ui/react'
 
 const Updates = () => {
   return (
-    <Box p={5}>
+    <Box
+      p={5}
+    >
       <Text as='h3' fontSize={24} fontWeight='semibold'>
         Оновлення
       </Text>

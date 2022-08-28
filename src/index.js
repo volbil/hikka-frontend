@@ -30,6 +30,7 @@ const theme = extendTheme({
       body: {
         bg: '#000000',
         color: '#979797',
+        // marginTop: '74px'
       },
       h1: {
         color: 'white'
@@ -39,6 +40,9 @@ const theme = extendTheme({
       }
     },
   },
+  colors: {
+    hblack: '#000000'
+  }
 })
 
 root.render(

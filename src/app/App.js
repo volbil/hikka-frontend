@@ -10,31 +10,55 @@ import { Login } from '../pages'
 import { Join } from '../pages'
 
 import { Flex } from '@chakra-ui/react'
+import { Grid, GridItem } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 
 const App = () => {
   return (
     <Box>
-      <Navigation />
-      <Container maxW='container.xl'>
-        <Flex
-          minH='100vh'
-          flexDir='row'
-          overflow='hidden'
-        >
-          <Flex w='75%'>
-            <Routes>
-              <Route path='/*' element={<AnimeList />}></Route>
-              <Route path='/anime/:slug' element={<AnimePage />}></Route>
-              <Route path='login' element={<Login />}></Route>
-              <Route path='join' element={<Join />}></Route>
-            </Routes>
-          </Flex>
-          <Flex ml='5' w='25%' borderLeft='1px solid #292929'>
+      <Box
+        // position='fixed'
+        bg='hblack'
+        zIndex={999}
+        borderBottom='1px solid #292929'
+        // top={0}
+        // left={0}
+        // right={0}
+        position='sticky'
+        top={0}
+      >
+        <Navigation />
+      </Box>
+
+      <Grid
+        templateColumns='repeat(14, 1fr)'
+        gap={4}
+      >
+        <GridItem colSpan={1} />
+
+        <GridItem colSpan={8}>
+          <Routes>
+            <Route path='/*' element={<AnimeList />}></Route>
+            <Route path='/anime/:slug' element={<AnimePage />}></Route>
+            <Route path='login' element={<Login />}></Route>
+            <Route path='join' element={<Join />}></Route>
+          </Routes>
+        </GridItem>
+        <GridItem colSpan={1} />
+        <GridItem colSpan={3} borderLeft='1px solid #292929'>
+          <Box
+            height='calc(100vh - 74px)'
+            overflow='hidden'
+            position='sticky'
+            top='74px'
+            overflowY='scroll'
+          >
             <Updates />
-          </Flex>
-        </Flex>
-      </Container>
+          </Box>
+        </GridItem>
+
+        <GridItem colSpan={1} />
+      </Grid>
     </Box>
   )
 }
