@@ -13,7 +13,7 @@ const Anime = ({ data }) => {
           <Image borderRadius='md' src={data.image} alt={data.title} />
         </AspectRatio>
       </Link>
-      <Text mt={1} fontWeight='600' as='h5'>{data.title}</Text>
+      <Text mt={3} fontWeight='600' as='h5'>{data.title}</Text>
     </Box>
   )
 }
